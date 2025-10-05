@@ -1,0 +1,11 @@
+customtkinter>=5.2.0
+Pillow>=10.0.0
+
+# Опциональные зависимости для GPU ускорения (NVIDIA CUDA)
+# Установка: pip install cupy-cuda11x numba
+# (замените cuda11x на вашу версию CUDA: cuda12x, cuda118, и т.д.)
+# 
+# cupy-cuda11x>=12.0.0  # для CUDA 11.x
+# cupy-cuda12x>=12.0.0  # для CUDA 12.x
+# numba>=0.58.0         # для CUDA JIT компиляции
+
