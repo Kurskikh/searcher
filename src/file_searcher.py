@@ -23,7 +23,8 @@ from PIL import Image, ImageTk
 
 # Попытка импорта GPU движка
 try:
-    from gpu_search_engine import HybridSearchEngine, GPU_AVAILABLE
+    # Используем относительный импорт для модуля в той же папке
+    from .gpu_search_engine import HybridSearchEngine, GPU_AVAILABLE
     GPU_SUPPORT = True
     
     # Получаем информацию о GPU

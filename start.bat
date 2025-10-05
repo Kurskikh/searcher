@@ -38,8 +38,8 @@ echo   Запуск приложения...
 echo ========================================
 echo.
 
-REM Запуск приложения
-python -m src.file_searcher
+REM Запуск приложения (используем -m для корректного импорта)
+python -m src
 
 if errorlevel 1 (
     echo.
