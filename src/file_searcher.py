@@ -405,13 +405,23 @@ class FileSearcherApp(ctk.CTk):
         try:
             # Путь к иконке в папке assets
             project_root = os.path.dirname(os.path.dirname(__file__))
-            icon_path = os.path.join(project_root, "assets", "icon.png")
-            if os.path.exists(icon_path):
-                icon_image = Image.open(icon_path)
+            
+            # Сначала пробуем .ico (лучше для Windows)
+            icon_ico_path = os.path.join(project_root, "assets", "icon.ico")
+            icon_png_path = os.path.join(project_root, "assets", "icon.png")
+            
+            if os.path.exists(icon_ico_path):
+                # Для Windows используем iconbitmap с .ico
+                self.iconbitmap(icon_ico_path)
+                print("✅ Иконка загружена (ICO)")
+            elif os.path.exists(icon_png_path):
+                # Fallback на PNG через iconphoto
+                icon_image = Image.open(icon_png_path)
                 icon_photo = ImageTk.PhotoImage(icon_image)
                 self.iconphoto(True, icon_photo)
                 # Сохраняем ссылку чтобы не было удалено сборщиком мусора
                 self._icon_photo = icon_photo
+                print("✅ Иконка загружена (PNG)")
         except Exception as e:
             print(f"⚠️ Не удалось загрузить иконку: {e}")
         
