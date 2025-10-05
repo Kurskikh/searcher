@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 echo ========================================
-echo   Мощный Файловый Поисковик v1.2.4
+echo   Мощный Файловый Поисковик
 echo ========================================
 echo.
 
@@ -17,12 +17,12 @@ if errorlevel 1 (
 echo [✓] Python найден
 echo.
 
-REM Проверка зависимостей
+REM Проверка и установка зависимостей
 echo Проверка зависимостей...
 pip show customtkinter >nul 2>&1
 if errorlevel 1 (
     echo [!] Установка зависимостей...
-    pip install -r requirements.txt
+    pip install -r ..\requirements.txt
     if errorlevel 1 (
         echo [ОШИБКА] Не удалось установить зависимости
         pause
@@ -38,7 +38,8 @@ echo   Запуск приложения...
 echo ========================================
 echo.
 
-REM Запуск приложения
+REM Запуск приложения (запускаем из корня проекта)
+cd ..
 python -m src.file_searcher
 
 if errorlevel 1 (

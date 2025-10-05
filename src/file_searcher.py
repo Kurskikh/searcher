@@ -403,7 +403,9 @@ class FileSearcherApp(ctk.CTk):
         
         # Устанавливаем иконку
         try:
-            icon_path = os.path.join(os.path.dirname(__file__), "icon.png")
+            # Путь к иконке в папке assets
+            project_root = os.path.dirname(os.path.dirname(__file__))
+            icon_path = os.path.join(project_root, "assets", "icon.png")
             if os.path.exists(icon_path):
                 icon_image = Image.open(icon_path)
                 icon_photo = ImageTk.PhotoImage(icon_image)
